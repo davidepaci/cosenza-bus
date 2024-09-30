@@ -1,0 +1,4 @@
+.venv
+app/node_modules
+data/pdf
+*/~$output.xlsx
