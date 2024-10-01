@@ -1,0 +1,7 @@
+#searchContainer {
+    transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+#backButton {
+    cursor:pointer;
+}
