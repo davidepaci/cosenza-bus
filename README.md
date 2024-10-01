@@ -1,4 +1,4 @@
-query cosenza bus routes
+web app to query cosenza bus routes
 
 time taken to complete: within 1 day
 
