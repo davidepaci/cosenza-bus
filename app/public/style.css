@@ -5,3 +5,7 @@
 #backButton {
     cursor:pointer;
 }
+
+.point-item {
+    cursor: pointer;
+}
