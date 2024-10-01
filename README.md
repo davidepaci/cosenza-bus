@@ -6,7 +6,7 @@ see live at https://cosenza-bus.onrender.com/
 this folder gets data from tables within a pdf, fixes them and saves them to sqlite (_python, pandas, pdfplumber, sqlite_)
 
 # app
-simple web app (_node, sql, tailwind, js_)
+simple web app (_node, sql, tailwind, js, ejs_)
 
 <img width="554" alt="image" src="https://github.com/user-attachments/assets/8a79e4cb-11f9-4156-9096-8965732e2429">
 
