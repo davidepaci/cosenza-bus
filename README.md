@@ -1,7 +1,7 @@
 time taken to complete: within 1 day
 
 see live at https://cosenza-bus.onrender.com/
-# run it for yourself
+# how to run
 ```
 git clone https://github.com/davidepaci/linea138
 cd linea138
@@ -9,10 +9,14 @@ cd app
 yarn install
 yarn start
 ```
-will be available at [localhost:3000](http://localhost:3000)
+the web app will be available at [localhost:3000](http://localhost:3000)
 
 # data
-this folder gets data from tables within a pdf, fixes them and saves them to sqlite (_python, pandas, pdfplumber, sqlite_)
+the scripts in this folder get data from tables within a pdf, fix it and saves it to sqlite (_python, pandas, pdfplumber, sqlite_)
+the scripts are ran in this order:
+- _extractsql2.py_
+- _excel2db.py_
+- _save2db.py_
 
 # app
 simple web app (_node, sql, tailwind, js, ejs_)
