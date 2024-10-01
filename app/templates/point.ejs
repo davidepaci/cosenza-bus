@@ -1,0 +1,71 @@
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
+    <link
+      rel="stylesheet"
+      as="style"
+      onload="this.rel='stylesheet'"
+      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Public+Sans%3Awght%40400%3B500%3B700%3B900"
+    />
+
+    <title><%= point['name'] %> - <%= point['_id'] %> - Linea 138</title>
+    <link rel="icon" type="image/x-icon" href="/favicon/icons8-bus-color-96.png" />
+
+    <!-- style.css -->
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  </head>
+  <body>
+    <div id="pointContainer">
+      <div class="relative flex size-full min-h-screen flex-col bg-white group/design-root overflow-x-hidden" style='font-family: "Public Sans", "Noto Sans", sans-serif;'>
+        <div class="flex items-center bg-white p-4 pb-2 justify-between">
+            <a href="/">
+                <div id="backButton" class="text-[#111518] flex size-12 shrink-0 items-center" data-icon="ArrowLeft" data-size="24px" data-weight="regular">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
+                    <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
+                    </svg>
+                </div>
+            </a>
+          <h2 class="text-[#111518] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Corsie che passano per</h2>
+          <br/>
+          <h4 class="text-[#111518] text-sm font-normal leading-normal"><%= point['name'] %></h4>
+        </div>
+        <div id="searchResults">
+            <h1 class="text-[#111518] text-2xl font-bold leading-tight tracking-[-0.015em] flex-1 ml-10 mt-5 pr-12">Bus in arrivo</h1>
+            <% for(var i=0; i < 10; i++) { %>
+                <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between point-item" data-id="<%= routes[i]['number'] %>">
+                    <div class="flex flex-row items-center gap-4">
+                        <!-- Bus icon -->
+                        <div class="text-[#111518] flex size-7" data-icon="MapPin" data-size="24px" data-weight="regular">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bus-front" viewBox="0 0 16 16">
+                                <path d="M5 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0m8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-6-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2zm1-6c-1.876 0-3.426.109-4.552.226A.5.5 0 0 0 3 4.723v3.554a.5.5 0 0 0 .448.497C4.574 8.891 6.124 9 8 9s3.426-.109 4.552-.226A.5.5 0 0 0 13 8.277V4.723a.5.5 0 0 0-.448-.497A44 44 0 0 0 8 4m0-1c-1.837 0-3.353.107-4.448.22a.5.5 0 1 1-.104-.994A44 44 0 0 1 8 2c1.876 0 3.426.109 4.552.226a.5.5 0 1 1-.104.994A43 43 0 0 0 8 3"/>
+                                <path d="M15 8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1V2.64c0-1.188-.845-2.232-2.064-2.372A44 44 0 0 0 8 0C5.9 0 4.208.136 3.064.268 1.845.408 1 1.452 1 2.64V4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v3.5c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2zM8 1c2.056 0 3.71.134 4.822.261.676.078 1.178.66 1.178 1.379v8.86a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5V2.64c0-.72.502-1.301 1.178-1.379A43 43 0 0 1 8 1"/>
+                            </svg>
+                        </div>
+                        
+                        <!-- Text -->
+                        <div class="flex flex-col justify-center">
+                            <p class="text-[#111518] text-base font-medium leading-normal line-clamp-1"><%= routes[i]['number'] %></p>
+                            <p class="text-[#60778a] text-sm font-normal leading-normal line-clamp-2">Termina a: <%= routes[i]['terminus'] %></p>
+                        </div>
+                    </div>
+                    <%= routes[i]['time'] %>
+                </div>                
+            <% } %>
+        </div>
+        <div class="h-20 mt-auto bg-white py-4 items-center justify-center text-center">
+            <b>Contattaci:</b> <a href="mailto:linea138@cosenzabustimetable.it">linea138@cosenzabustimetable.it</a>
+            <br/><br/>
+            <a target="_blank" href="https://icons8.com/icon/15137/bus">Bus</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+            </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const pointContainer = document.getElementById('pointContainer');
+    console.log(JSON.parse('<%- JSON.stringify(point) %>'));
+    console.log(JSON.parse('<%- JSON.stringify(routes) %>'));
+      </script>
+</html>
