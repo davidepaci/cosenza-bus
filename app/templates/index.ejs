@@ -51,10 +51,10 @@
         </div>
         <div id="searchResults">
           <% for(var i=0; i < 10; i++) { %>
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between point-item" data-id=<%= points[i]['_id'] %>>
               <div class="flex flex-col justify-center">
                 <p class="text-[#111518] text-base font-medium leading-normal line-clamp-1"><%= points[i]['name'] %></p>
-                <p class="text-[#60778a] text-sm font-normal leading-normal line-clamp-2">Stop ID: <%= points[i]['_id'] %></p>
+                <p class="text-[#60778a] text-sm font-normal leading-normal line-clamp-2">ID fermata: <%= points[i]['_id'] %></p>
               </div>
               <div class="shrink-0">
                 <div class="text-[#111518] flex size-7 items-center justify-center" data-icon="MapPin" data-size="24px" data-weight="regular">
@@ -105,6 +105,7 @@
                 value=""
                 id="searchInput1"
               />
+              <input type="hidden" id="pointID" />
             </div>
           </label>
         </div>
@@ -182,21 +183,38 @@
 
     function pointLookup() {
       const query = event.target.value.toLowerCase();
-        const filteredPoints = busPoints.filter(point => 
-            point.name.toLowerCase().includes(query)
-        );
-        displayResults(filteredPoints);
+      const filteredPoints = busPoints.filter(point => 
+          point.name.toLowerCase().includes(query)
+      );
+      displayResults(filteredPoints);
     }
+
+    function updateEventListeners() {
+      const pointItems = document.querySelectorAll('.point-item');
+        pointItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const pointID = this.getAttribute('data-id'); // Get the ID from data attribute
+                document.getElementById('pointID').value = pointID; // Set the hidden input value
+                toggleSearch(); // Call the toggleSearch function
+                pointName = busPoints.find(point => point._id === Number(pointID)).name;
+                searchInput1.value = pointName;
+                searchInput2.value = pointName;
+            });
+        });
+    }
+
+    // call the updateEventListeners function on page load
+    updateEventListeners();
 
     function displayResults(points) {
     searchResults.innerHTML = ''; // Clear previous results
 
     // Create HTML string using template literals
     const resultsHTML = points.map(point => `
-            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between">
+            <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between point-item" data-id="${point._id}">
                 <div class="flex flex-col justify-center">
                     <p class="text-[#111518] text-base font-medium leading-normal line-clamp-1">${point.name}</p>
-                    <p class="text-[#60778a] text-sm font-normal leading-normal line-clamp-2">Stop ID: ${point._id}</p>
+                    <p class="text-[#60778a] text-sm font-normal leading-normal line-clamp-2">ID fermata: ${point._id}</p>
                 </div>
                 <div class="shrink-0">
                     <div class="text-[#111518] flex size-7 items-center justify-center" data-icon="MapPin" data-size="24px" data-weight="regular">
@@ -210,6 +228,9 @@
 
         // Set the innerHTML of the searchResults
         searchResults.innerHTML = resultsHTML; // Update the DOM with the generated HTML
+
+        // Add click event listener to each point item
+        updateEventListeners();
     }
 
     searchInput2.addEventListener('input', (event) => {
