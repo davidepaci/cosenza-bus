@@ -78,6 +78,46 @@ ORDER BY s.time;
   });
 });
 
+// Route for route pages
+app.get('/corsia/:route', (req, res) => {
+  const routeId = req.params.route;
+  // sql query to get all info of a route, and all stops + times + names
+  const sql = `
+SELECT 
+    r.number AS route_number,
+    r.period,
+    r.terminus,
+    s.time,
+    p._id AS point_id,
+    p.name AS point_name
+FROM 
+    route r
+JOIN 
+    stop s ON r.number = s.route_id
+JOIN 
+    point p ON s.point_id = p._id
+WHERE 
+    r.number = ?  -- Replace with the specific route number
+ORDER BY s.time;
+`;
+
+  // db get all rows
+  db.all(sql, [routeId], (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+      return;
+    }
+
+    if (!rows) {
+      res.status(404).send('Routes not found');
+      return;
+    }
+
+    return res.render('route', { data: rows });
+  });
+});
+
 // Start server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
