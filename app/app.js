@@ -9,7 +9,7 @@ const db = new sqlite3.Database(path.join(__dirname, 'database', 'output.db'), (
   if (err) {
     console.error(err.message);
   }
-  console.log('Connected to the stops database.');
+  console.log('Connected to the bus timetable database.');
 });
 
 // Set EJS as the templating engine
