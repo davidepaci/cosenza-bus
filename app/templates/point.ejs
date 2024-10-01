@@ -33,13 +33,7 @@
         </div>
         <div id="searchResults">
             <h1 class="text-[#111518] text-2xl font-bold leading-tight tracking-[-0.015em] flex-1 ml-10 mt-5 pr-12">Bus in arrivo</h1>
-            <!-- check min of 10 or routes length -->
-            <% if(routes.length < 10) { %>
-            <% var limit = routes.length; %>
-            <% } else { %>
-            <% var limit = 10; %>
-            <% } %>
-            <% for(var i=0; i < limit; i++) { %>
+            <% for(var i=0; i < routes.length; i++) { %>
                 <% 
                     const curTime = new Date();
                     
