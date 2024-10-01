@@ -13,6 +13,7 @@ the web app will be available at [localhost:3000](http://localhost:3000)
 
 # data
 the scripts in this folder get data from tables within a pdf, fix it and saves it to sqlite (_python, pandas, pdfplumber, sqlite_)
+
 the scripts are ran in this order:
 - _extractsql2.py_
 - _excel2db.py_
