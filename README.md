@@ -6,6 +6,7 @@ this folder gets data from tables within a pdf, fixes them and saves them to sql
 # app
 simple web app
 
-![WhatsApp Image 2024-09-30 at 21 28 13_130b96c5](https://github.com/user-attachments/assets/8e3dea15-9800-424b-9aef-9b23ddd2759d)
+![image](https://github.com/user-attachments/assets/97eec251-e893-4f07-86d9-9b467934038f)
+![image](https://github.com/user-attachments/assets/999e73cc-1091-4554-b170-2f77864269ac)
 
 design with https://www.usegalileo.ai/
