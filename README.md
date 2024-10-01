@@ -5,10 +5,10 @@ time taken to complete: within 1 day
 see live at https://cosenza-bus.onrender.com/
 
 # data
-this folder gets data from tables within a pdf, fixes them and saves them to sqlite
+this folder gets data from tables within a pdf, fixes them and saves them to sqlite (_python, pandas, pdfplumber, sqlite_)
 
 # app
-simple web app
+simple web app (_node, sql, tailwind, js_)
 
 <img width="554" alt="image" src="https://github.com/user-attachments/assets/8a79e4cb-11f9-4156-9096-8965732e2429">
 
