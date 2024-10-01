@@ -1,6 +1,15 @@
 time taken to complete: within 1 day
 
 see live at https://cosenza-bus.onrender.com/
+# run it for yourself
+```
+git clone https://github.com/davidepaci/linea138
+cd linea138
+cd app
+yarn install
+yarn start
+```
+will be available at [localhost:3000](http://localhost:3000)
 
 # data
 this folder gets data from tables within a pdf, fixes them and saves them to sqlite (_python, pandas, pdfplumber, sqlite_)
