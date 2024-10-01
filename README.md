@@ -19,3 +19,4 @@ design with https://www.usegalileo.ai/
 - no option to choose custom date and time to check
 - svgs loading too slowly?
 - serverless hosting/static website generation are perhaps ideal?
+- bad mobile responsiveness
