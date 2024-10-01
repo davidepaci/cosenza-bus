@@ -26,7 +26,16 @@ app.get('/views', (req, res) => {
 
 // Route for index page
 app.get('/', (req, res) => {
-  res.render('index');
+  // get all stops from sql
+  const sql = 'SELECT * FROM stop';
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      console.error(err.message);
+      res.status(500).send('Database error');
+      return;
+    }
+    res.render('index', { stops: rows });
+  });
 });
 
 // Route for stop pages
