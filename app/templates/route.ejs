@@ -37,6 +37,20 @@
             <h1 class="text-[#111518] text-2xl font-bold leading-tight tracking-[-0.015em] flex-1 ml-10 mt-5 pr-12">Lista fermate</h1>
 
             <% for(var i=0; i < data.length; i++) { %>
+                <% 
+                    const curTime = new Date();
+                    
+                    // Assuming givenTimeStr is your 'HH:mm' value
+                    const givenTimeStr = data[i]['time']; // replace with your actual time value
+                    
+                    // Extract hours and minutes from the given time string
+                    const [givenHours, givenMinutes] = givenTimeStr.split(':').map(Number);
+
+                    // Create a new Date object for the given time, using the current date
+                    const givenTime = new Date(curTime.getFullYear(), curTime.getMonth(), curTime.getDate(), givenHours, givenMinutes);
+
+                    const isOver = givenTime < curTime;
+                %>
                 <a href="/fermata/<%= data[i]['point_id'] %>">   
                     <div class="flex items-center gap-4 bg-white px-4 min-h-[72px] py-2 justify-between route-item" data-id="<%= data[i]['point_id'] %>">
                         <div class="flex flex-row items-center gap-4">
@@ -53,7 +67,11 @@
                                 <p class="text-[#60778a] text-sm font-normal leading-normal line-clamp-2">ID fermata: <%= data[i]['point_id'] %></p>
                             </div>
                         </div>
-                        <%= data[i]['time'] %>
+                        <% if(isOver) { %>
+                            <p><s><%= data[i]['time'] %></s></p>
+                        <% } else { %>
+                            <%= data[i]['time'] %>
+                        <% } %>
                     </div>    
                 </a>   
             <% } %>
